@@ -32,7 +32,7 @@ namespace QiMata.CPPTools.ClassGenerator.ViewModels
             RaisePropertyChanged(propInfo.Name);
         }
 
-        public void RaisePropertyChanged(string propertyName)
+        public virtual void RaisePropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
             {

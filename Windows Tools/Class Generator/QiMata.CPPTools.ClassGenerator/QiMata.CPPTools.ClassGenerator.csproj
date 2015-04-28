@@ -103,7 +103,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\QiMata.CPPTools.RazorTextGenerator\QiMata.CPPTools.RazorTextGenerator.csproj">
+      <Project>{951ebdca-dbf7-45d1-a6ca-97bf033c6888}</Project>
+      <Name>QiMata.CPPTools.RazorTextGenerator</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

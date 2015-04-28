@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using QiMata.CPPTools.RazorTextGenerator.Templates;
+using RazorEngine;
+using RazorEngine.Templating;
 
 namespace QiMata.CPPTools.RazorTextGenerator
 {
@@ -11,7 +14,7 @@ namespace QiMata.CPPTools.RazorTextGenerator
     {
         public string GenerateClass(CPPTypeModel typeModel)
         {
-
+            return Engine.Razor.RunCompile(EmbeddedResources.ClassHeaderTemplate, "ClassHeaderTemplate", null,typeModel);
         }
     }
 }

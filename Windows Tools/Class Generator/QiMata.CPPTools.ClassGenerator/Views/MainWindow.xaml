@@ -28,9 +28,9 @@
             </DockPanel>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBox Text="{Binding Namespace}"></TextBox>
-            <TextBox Text="{Binding ClassName}"></TextBox>
+            <TextBox Text="{Binding Namespace, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBox Text="{Binding ClassName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
         </StackPanel>
-        <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"></TextBlock>
+        <TextBox Background="Transparent" IsReadOnly="True" TextWrapping="NoWrap" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding GeneratedCode,Mode=OneWay}"></TextBox>
     </Grid>
 </Window>
