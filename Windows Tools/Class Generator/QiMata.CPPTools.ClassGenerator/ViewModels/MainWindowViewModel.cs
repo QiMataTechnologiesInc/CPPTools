@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using QiMata.CPPTools.RazorTextGenerator.Models;
 
 namespace QiMata.CPPTools.ClassGenerator.ViewModels
@@ -15,6 +16,25 @@ namespace QiMata.CPPTools.ClassGenerator.ViewModels
         public MainWindowViewModel()
         {
             _classGenerator = new RazorTextGenerator.ClassGenerator();
+        }
+
+        private ICommand _addPropertyClickedCommand;
+
+        public ICommand AddPropertyClickedCommand
+        {
+            get { return _addPropertyClickedCommand ?? (_addPropertyClickedCommand = new Command(() => AddPropertyVisible = !AddPropertyVisible)); }
+        }
+
+        private bool _addPropertyVisible;
+
+        public bool AddPropertyVisible
+        {
+            get { return _addPropertyVisible; }
+            set
+            {
+                _addPropertyVisible = value;
+                RaisePropertyChanged(() => this.AddPropertyVisible);
+            }
         }
 
 
@@ -63,6 +83,8 @@ namespace QiMata.CPPTools.ClassGenerator.ViewModels
             }
         }
 
+
+
         public override void RaisePropertyChanged(string propertyName)
         {
             base.RaisePropertyChanged(propertyName);
@@ -74,6 +96,28 @@ namespace QiMata.CPPTools.ClassGenerator.ViewModels
                     ClassName = this.ClassName,
                     Namespaces = this.Namespace.Split(new string[]{ "::", "."},StringSplitOptions.RemoveEmptyEntries)
                 });
+            }
+        }
+
+        class Command : ICommand
+        {
+            private Action _action;
+
+            public Command(Action action)
+            {
+                _action = action;
+            }
+
+            public bool CanExecute(object parameter)
+            {
+                return true;
+            }
+
+            public event EventHandler CanExecuteChanged;
+
+            public void Execute(object parameter)
+            {
+                _action();
             }
         }
     }

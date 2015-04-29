@@ -11,5 +11,7 @@ namespace QiMata.CPPTools.RazorTextGenerator.Models
         public IEnumerable<string> Namespaces { get; set; }
 
         public string ClassName { get; set; }
+
+        public IEnumerable<Property> Properties { get; set; }
     }
 }

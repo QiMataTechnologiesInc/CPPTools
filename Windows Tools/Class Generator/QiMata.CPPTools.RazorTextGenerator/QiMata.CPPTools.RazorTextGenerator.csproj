@@ -48,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassGenerator.cs" />
+    <Compile Include="Models\AccessModifier.cs" />
     <Compile Include="Models\CPPTypeModel.cs" />
+    <Compile Include="Models\Property.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates\EmbeddedResources.cs" />
     <Compile Include="Templates\TemplateHelpers.cs" />

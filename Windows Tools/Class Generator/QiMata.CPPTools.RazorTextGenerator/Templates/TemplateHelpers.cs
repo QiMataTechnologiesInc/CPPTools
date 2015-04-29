@@ -12,7 +12,7 @@ namespace QiMata.CPPTools.RazorTextGenerator.Templates
         public static string GenerateNamespaceString(CPPTypeModel typeModel)
         {
             var initial = typeModel.Namespaces.Aggregate("__", (current, ns) => current + (ns.ToUpper() + "__"));
-            return initial + typeModel.ClassName.ToUpper() + "__";
+            return initial + typeModel.ClassName.ToUpper() + "__HPP__";
         }
 
         public static string GenerateNamespaceAndClassDeclaration(CPPTypeModel typeModel)
