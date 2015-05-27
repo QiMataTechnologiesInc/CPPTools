@@ -32,14 +32,9 @@
             <TextBox Text="{Binding ClassName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" >
-            <Grid  Visibility="{Binding Path=AddPropertyVisible, Converter={StaticResource VisibilityConverter}}">
-                <Grid.ColumnDefinitions>
-                    
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    
-                </Grid.RowDefinitions>
-            </Grid>
+            <StackPanel  Visibility="{Binding Path=AddPropertyVisible, Converter={StaticResource VisibilityConverter}}" DataContext="{Binding Property}">
+                <Label Content=""></Label>
+            </StackPanel>
             <TextBox Background="Transparent" IsReadOnly="True" TextWrapping="NoWrap" Text="{Binding GeneratedCode,Mode=OneWay}"></TextBox>
         </StackPanel>
     </Grid>

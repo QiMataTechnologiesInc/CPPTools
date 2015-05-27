@@ -16,6 +16,8 @@ namespace QiMata.CPPTools.RazorTextGenerator.Models
 
         public bool HasSetter { get; set; }
 
-        public AccessModifier AccessModifier { get; set; }
+        public AccessModifier GetterAccessModifier { get; set; }
+
+        public AccessModifier SetterAccessModifier { get; set; }
     }
 }

@@ -29,6 +29,7 @@ namespace QiMata.CPPTools.RazorTextGenerator.Templates
             initial.AppendTabs(tabCount).Append("class ").Append(typeModel.ClassName).AppendLine();
             initial.AppendTabs(tabCount).Append("{").AppendLine();
             initial.AppendTabs(tabCount).Append("\t").Append("public:").AppendLine();
+            GeneratePublicProperties(initial,typeModel, tabCount);
             initial.AppendTabs(tabCount).Append("\t").Append("protected:").AppendLine();
             initial.AppendTabs(tabCount).Append("\t").Append("private:").AppendLine();
             initial.AppendTabs(tabCount).Append("};").AppendLine();
@@ -40,6 +41,22 @@ namespace QiMata.CPPTools.RazorTextGenerator.Templates
             }
 
             return initial.ToString();
+        }
+
+        private static void GeneratePublicProperties(StringBuilder initial, CPPTypeModel typeModel, int tabCount)
+        {
+            foreach (Property property in typeModel.Properties.Where(x => x.HasGetter && x.GetterAccessModifier == AccessModifier.Public))
+            {
+                initial.AppendTabs(tabCount)
+                    .Append("\t\t").GetPublicPropertyGetter(property)
+                    .AppendLine();
+            }
+        }
+
+        private static StringBuilder GetPublicPropertyGetter(this StringBuilder initial, Property property)
+        {
+            initial.Append(property.TypeName).Append(" ").Append("get").Append(property.Name).Append("();").AppendLine();
+            return initial;
         }
 
         private static StringBuilder AppendTabs(this StringBuilder stringBuilder,int tabCount)

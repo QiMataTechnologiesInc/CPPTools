@@ -83,6 +83,21 @@ namespace QiMata.CPPTools.ClassGenerator.ViewModels
             }
         }
 
+        private Property _property;
+
+        public Property Property
+        {
+            get
+            {
+                return _property ?? (_property = new Property());
+            }
+            set
+            {
+                _property = value;
+                RaisePropertyChanged(() => this.Property);
+            }
+        }
+
 
 
         public override void RaisePropertyChanged(string propertyName)
