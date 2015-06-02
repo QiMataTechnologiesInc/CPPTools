@@ -31,6 +31,7 @@ namespace QiMata.CPPTools.CommandLine.Helpers
 
         private CPPTypeModel ConvertType(Type type)
         {
+            Console.WriteLine(type.FullName);
             if (type.Namespace == null)
             {
                 return null;
@@ -111,7 +112,7 @@ namespace QiMata.CPPTools.CommandLine.Helpers
             {
                 AccessModifier = methodInfo.IsPublic ? AccessModifier.Public : AccessModifier.Private,
                 Name = methodInfo.Name,
-                ReturnTypeName = methodInfo.ReturnType.FullName,
+                ReturnTypeName = methodInfo.ReturnType.GetTypeString(),
                 Parameters = GetMethodParameters(methodInfo)
             });
         }
@@ -151,7 +152,7 @@ namespace QiMata.CPPTools.CommandLine.Helpers
             var prop = new Property
             {
                 Name = arg.Name,
-                TypeName = arg.PropertyType.FullName,
+                TypeName = arg.PropertyType.GetTypeString(),
             };
             var setMethod = arg.GetSetMethod();
             if (arg.CanWrite && setMethod != null)

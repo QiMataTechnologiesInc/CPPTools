@@ -7,7 +7,14 @@ using System.Threading.Tasks;
 namespace QiMata.CPPTools.RazorTextGenerator.Models
 {
     public class CPPTypeModel
-    { 
+    {
+        public CPPTypeModel()
+        {
+            Namespaces = new List<string>();
+            Properties = new List<Property>();
+
+        }
+
         public IEnumerable<string> Namespaces { get; set; }
 
         public string ClassName { get; set; }

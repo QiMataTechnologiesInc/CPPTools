@@ -14,7 +14,7 @@ namespace QiMata.CPPTools.RazorTextGenerator
     {
         public string GenerateClass(CPPTypeModel typeModel)
         {
-            return Engine.Razor.RunCompile(EmbeddedResources.ClassHeaderTemplate, "ClassHeaderTemplate", null,typeModel);
+            return Engine.Razor.RunCompile(EmbeddedResources.ClassHeaderTemplate, "ClassHeaderTemplate", null,typeModel).Replace("&lt;", "<").Replace("&gt;", ">");
         }
     }
 }

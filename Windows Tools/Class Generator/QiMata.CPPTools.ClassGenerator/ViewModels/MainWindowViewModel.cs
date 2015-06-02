@@ -89,7 +89,7 @@ namespace QiMata.CPPTools.ClassGenerator.ViewModels
         {
             get
             {
-                return _property ?? (_property = new Property());
+                return _property ?? (_property = new PropertyViewModel());
             }
             set
             {

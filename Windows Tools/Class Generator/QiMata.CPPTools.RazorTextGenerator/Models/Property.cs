@@ -10,6 +10,8 @@ namespace QiMata.CPPTools.RazorTextGenerator.Models
     {
         public string TypeName { get; set; }
 
+        public string FullTypeName { get; set; }
+
         public string Name { get; set; }
 
         public bool HasGetter { get; set; }

@@ -33,7 +33,40 @@
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" >
             <StackPanel  Visibility="{Binding Path=AddPropertyVisible, Converter={StaticResource VisibilityConverter}}" DataContext="{Binding Property}">
-                <Label Content=""></Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="0">
+                        <Label>Getter Exposure</Label>
+                        <RadioButton IsChecked="{Binding Path=RadioButton1Checked}">Public</RadioButton>
+                        <RadioButton IsChecked="{Binding Path=RadioButton2Checked}">Protected</RadioButton>
+                        <RadioButton IsChecked="{Binding Path=RadioButton3Checked}">Private</RadioButton>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="1">
+                        <Label>Setter Exposure</Label>
+                        <RadioButton IsChecked="{Binding Path=RadioButton4Checked}">Public</RadioButton>
+                        <RadioButton IsChecked="{Binding Path=RadioButton5Checked}">Protected</RadioButton>
+                        <RadioButton IsChecked="{Binding Path=RadioButton6Checked}">Private</RadioButton>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Name:</Label>
+                            <DockPanel HorizontalAlignment="Stretch">
+                                <TextBox DockPanel.Dock="Left" Width="Auto" Text="{Binding PropertyName}" HorizontalAlignment="Stretch"></TextBox>
+                            </DockPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Type:</Label>
+                            <TextBox Text="{Binding PropertyTypeName}" HorizontalContentAlignment="Stretch"></TextBox>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
             </StackPanel>
             <TextBox Background="Transparent" IsReadOnly="True" TextWrapping="NoWrap" Text="{Binding GeneratedCode,Mode=OneWay}"></TextBox>
         </StackPanel>
