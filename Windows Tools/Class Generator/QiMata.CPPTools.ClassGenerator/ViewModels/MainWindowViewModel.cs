@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using QiMata.CPPTools.RazorTextGenerator.Models;
+using System.Collections.ObjectModel;
 
 namespace QiMata.CPPTools.ClassGenerator.ViewModels
 {
@@ -98,7 +99,33 @@ namespace QiMata.CPPTools.ClassGenerator.ViewModels
             }
         }
 
+        private ObservableCollection<Property> _properties;
+        public ObservableCollection<Property> Properties
+        {
+            get
+            {
+                return _properties ?? (_properties = new ObservableCollection<Property>());
+            }
+            set
+            {
+                _properties = value;
+                RaisePropertyChanged(() => this.Properties);
+            }
+        }
 
+        private ICommand _addPropertyCommand;
+        public ICommand AddPropertyCommand
+        {
+            get
+            {
+                return _addPropertyCommand ?? (_addPropertyCommand = new Command(() =>
+                {
+                    Properties.Add(Property);
+                    Property = null;
+                    AddPropertyVisible = false;
+                }));
+            }
+        }
 
         public override void RaisePropertyChanged(string propertyName)
         {

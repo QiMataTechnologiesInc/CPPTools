@@ -41,6 +41,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Grid.Column="0">
                         <Label>Getter Exposure</Label>
@@ -65,6 +66,9 @@
                             <Label>Type:</Label>
                             <TextBox Text="{Binding PropertyTypeName}" HorizontalContentAlignment="Stretch"></TextBox>
                         </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal">
+                        <Button Content="Add Property" Command="{Binding AddPropertyCommand}"></Button>
                     </StackPanel>
                 </Grid>
             </StackPanel>
